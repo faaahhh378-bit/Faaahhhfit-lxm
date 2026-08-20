@@ -1,0 +1,822 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1">
+
+<title>
+FAAAHHH FIT Admin Dashboard
+</title>
+
+
+<style>
+
+:root{
+  --bg:#07100b;
+  --card:#0d1912;
+  --lime:#d9ff42;
+  --text:#f4f4ed;
+  --muted:#849087;
+  --border:#26352b;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+.wrap{
+  width:min(1150px,calc(100% - 30px));
+  margin:auto;
+}
+
+.header{
+  padding:35px 0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.logo{
+  width:85px;
+  height:85px;
+  object-fit:cover;
+  border-radius:50%;
+}
+
+h1{
+  margin:0;
+  font-size:38px;
+}
+
+.subtitle{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:8px;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.stat{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:22px;
+}
+
+.stat small{
+  color:var(--muted);
+  font-size:10px;
+  font-weight:bold;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.number{
+  font-size:42px;
+  font-weight:900;
+  color:var(--lime);
+  margin-top:10px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:22px;
+  margin-bottom:18px;
+}
+
+.card h2{
+  margin-top:0;
+}
+
+.tableWrap{
+  overflow:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:750px;
+}
+
+th,
+td{
+  padding:14px;
+  text-align:left;
+  border-bottom:1px solid var(--border);
+  font-size:12px;
+}
+
+th{
+  color:var(--muted);
+  font-size:10px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+.rating{
+  color:var(--lime);
+}
+
+button{
+  border:0;
+  border-radius:7px;
+  padding:10px 14px;
+  background:var(--lime);
+  color:#071006;
+  font-size:10px;
+  font-weight:900;
+  cursor:pointer;
+  letter-spacing:.08em;
+}
+
+.delete{
+  background:#282828;
+  color:white;
+}
+
+.actions{
+  display:flex;
+  gap:8px;
+}
+
+.empty{
+  color:var(--muted);
+  text-align:center;
+  padding:30px;
+}
+
+@media(max-width:700px){
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="wrap">
+
+
+<header class="header">
+
+<div style="display:flex;align-items:center;gap:18px">
+
+<img
+class="logo"
+src="logo.jpg"
+alt="FAAAHHH FIT">
+
+<div>
+
+<h1>
+FAAAHHH FIT
+</h1>
+
+<div class="subtitle">
+ADMIN DASHBOARD · FUEL YOUR CORE
+</div>
+
+</div>
+
+</div>
+
+
+<button onclick="refreshDashboard()">
+
+REFRESH
+
+</button>
+
+</header>
+
+
+
+<section class="stats">
+
+<div class="stat">
+
+<small>
+Total Reviews
+</small>
+
+<div
+class="number"
+id="totalReviews">
+
+0
+
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<small>
+Pending Reviews
+</small>
+
+<div
+class="number"
+id="pendingReviews">
+
+0
+
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<small>
+Subscription Leads
+</small>
+
+<div
+class="number"
+id="totalLeads">
+
+0
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section class="card">
+
+<h2>
+Pending Customer Reviews
+</h2>
+
+
+<div class="tableWrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>
+Name
+</th>
+
+<th>
+Food
+</th>
+
+<th>
+Rating
+</th>
+
+<th>
+Review
+</th>
+
+<th>
+Action
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody
+id="reviewsTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+
+<section class="card">
+
+<h2>
+Approved Reviews
+</h2>
+
+
+<div class="tableWrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>
+Name
+</th>
+
+<th>
+Food
+</th>
+
+<th>
+Rating
+</th>
+
+<th>
+Review
+</th>
+
+<th>
+Action
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody
+id="approvedTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+
+<section class="card">
+
+<h2>
+Food Subscription Waitlist
+</h2>
+
+
+<div class="tableWrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>
+Name
+</th>
+
+<th>
+Phone
+</th>
+
+<th>
+Email
+</th>
+
+<th>
+Interest
+</th>
+
+<th>
+Date
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody
+id="leadsTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+</div>
+
+
+
+<script>
+
+
+function escapeHTML(text){
+
+  return String(text || "")
+
+  .replaceAll("&","&amp;")
+  .replaceAll("<","&lt;")
+  .replaceAll(">","&gt;")
+  .replaceAll('"',"&quot;");
+
+}
+
+
+function getReviews(){
+
+  return JSON.parse(
+
+    localStorage.getItem(
+      "faaahhh_fit_reviews"
+    ) || "[]"
+
+  );
+
+}
+
+
+function saveReviews(reviews){
+
+  localStorage.setItem(
+
+    "faaahhh_fit_reviews",
+
+    JSON.stringify(reviews)
+
+  );
+
+}
+
+
+function getLeads(){
+
+  return JSON.parse(
+
+    localStorage.getItem(
+      "faaahhh_fit_leads"
+    ) || "[]"
+
+  );
+
+}
+
+
+function formatDate(date){
+
+  if(!date){
+    return "-";
+  }
+
+  return new Date(date)
+  .toLocaleDateString();
+
+}
+
+
+function refreshDashboard(){
+
+
+  const reviews =
+  getReviews();
+
+
+  const leads =
+  getLeads();
+
+
+  const pending =
+  reviews.filter(
+    review => !review.approved
+  );
+
+
+  const approved =
+  reviews.filter(
+    review => review.approved
+  );
+
+
+  document
+  .getElementById("totalReviews")
+  .textContent =
+  reviews.length;
+
+
+  document
+  .getElementById("pendingReviews")
+  .textContent =
+  pending.length;
+
+
+  document
+  .getElementById("totalLeads")
+  .textContent =
+  leads.length;
+
+
+
+  const pendingTable =
+  document.getElementById(
+    "reviewsTable"
+  );
+
+
+  if(pending.length === 0){
+
+    pendingTable.innerHTML = `
+
+    <tr>
+
+    <td
+    colspan="5"
+    class="empty">
+
+    No pending reviews.
+
+    </td>
+
+    </tr>
+
+    `;
+
+  }
+
+  else{
+
+    pendingTable.innerHTML =
+
+    pending.map(review => `
+
+    <tr>
+
+    <td>
+    ${escapeHTML(review.name)}
+    </td>
+
+    <td>
+    ${escapeHTML(review.food)}
+    </td>
+
+    <td class="rating">
+    ${"★".repeat(review.rating)}
+    ${"☆".repeat(5-review.rating)}
+    </td>
+
+    <td>
+    ${escapeHTML(review.text)}
+    </td>
+
+    <td>
+
+    <div class="actions">
+
+    <button
+    onclick="approveReview(${review.id})">
+
+    APPROVE
+
+    </button>
+
+
+    <button
+    class="delete"
+    onclick="deleteReview(${review.id})">
+
+    DELETE
+
+    </button>
+
+    </div>
+
+    </td>
+
+    </tr>
+
+    `).join("");
+
+  }
+
+
+
+  const approvedTable =
+  document.getElementById(
+    "approvedTable"
+  );
+
+
+  if(approved.length === 0){
+
+    approvedTable.innerHTML = `
+
+    <tr>
+
+    <td
+    colspan="5"
+    class="empty">
+
+    No approved reviews yet.
+
+    </td>
+
+    </tr>
+
+    `;
+
+  }
+
+  else{
+
+    approvedTable.innerHTML =
+
+    approved.map(review => `
+
+    <tr>
+
+    <td>
+    ${escapeHTML(review.name)}
+    </td>
+
+    <td>
+    ${escapeHTML(review.food)}
+    </td>
+
+    <td class="rating">
+    ${"★".repeat(review.rating)}
+    ${"☆".repeat(5-review.rating)}
+    </td>
+
+    <td>
+    ${escapeHTML(review.text)}
+    </td>
+
+    <td>
+
+    <button
+    class="delete"
+    onclick="deleteReview(${review.id})">
+
+    DELETE
+
+    </button>
+
+    </td>
+
+    </tr>
+
+    `).join("");
+
+  }
+
+
+
+  const leadsTable =
+  document.getElementById(
+    "leadsTable"
+  );
+
+
+  if(leads.length === 0){
+
+    leadsTable.innerHTML = `
+
+    <tr>
+
+    <td
+    colspan="5"
+    class="empty">
+
+    No subscription leads yet.
+
+    </td>
+
+    </tr>
+
+    `;
+
+  }
+
+  else{
+
+    leadsTable.innerHTML =
+
+    leads.map(lead => `
+
+    <tr>
+
+    <td>
+    ${escapeHTML(lead.name)}
+    </td>
+
+    <td>
+    ${escapeHTML(lead.phone)}
+    </td>
+
+    <td>
+    ${escapeHTML(lead.email || "-")}
+    </td>
+
+    <td>
+    ${escapeHTML(lead.interest)}
+    </td>
+
+    <td>
+    ${formatDate(lead.date)}
+    </td>
+
+    </tr>
+
+    `).join("");
+
+  }
+
+}
+
+
+
+function approveReview(id){
+
+  const reviews =
+  getReviews();
+
+
+  const updatedReviews =
+  reviews.map(review => {
+
+    if(review.id === id){
+
+      return {
+        ...review,
+        approved:true
+      };
+
+    }
+
+    return review;
+
+  });
+
+
+  saveReviews(updatedReviews);
+
+  refreshDashboard();
+
+}
+
+
+
+function deleteReview(id){
+
+  const reviews =
+  getReviews();
+
+
+  const updatedReviews =
+  reviews.filter(
+    review => review.id !== id
+  );
+
+
+  saveReviews(updatedReviews);
+
+  refreshDashboard();
+
+}
+
+
+refreshDashboard();
+
+</script>
+
+</body>
+
+</html>
