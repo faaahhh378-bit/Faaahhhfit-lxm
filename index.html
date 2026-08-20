@@ -1,0 +1,1219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>FAAAHHH FIT — FUEL YOUR CORE</title>
+
+<meta name="description"
+content="FAAAHHH FIT — protein food and healthy food by LXM HAUS.">
+
+<style>
+:root{
+  --bg:#06100b;
+  --card:#0d1b13;
+  --lime:#d9ff42;
+  --cream:#f5f0df;
+  --gold:#c8923d;
+  --muted:#9aa49d;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--cream);
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+.wrap{
+  width:min(1120px,calc(100% - 34px));
+  margin:auto;
+}
+
+.nav{
+  height:88px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  width:76px;
+  height:76px;
+  object-fit:cover;
+  border-radius:50%;
+}
+
+.nav a{
+  color:#c8cec9;
+  text-decoration:none;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  margin-left:25px;
+}
+
+.nav a:hover{
+  color:var(--lime);
+}
+
+.hero{
+  min-height:730px;
+  position:relative;
+  overflow:hidden;
+  background:
+  radial-gradient(
+    circle at 75% 40%,
+    #14532d 0,
+    #092516 25%,
+    #06100b 67%
+  );
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:600px;
+  height:600px;
+  border:1px solid rgba(217,255,66,.14);
+  border-radius:50%;
+  right:-210px;
+  top:130px;
+  box-shadow:0 0 130px rgba(217,255,66,.09);
+  animation:float 7s ease-in-out infinite;
+}
+
+.heroContent{
+  position:relative;
+  z-index:2;
+  padding:105px 0;
+}
+
+.eyebrow{
+  font-size:10px;
+  letter-spacing:.18em;
+  color:#b0b8b2;
+  font-weight:900;
+}
+
+.dot{
+  display:inline-block;
+  width:7px;
+  height:7px;
+  background:var(--lime);
+  border-radius:50%;
+  margin-right:8px;
+  box-shadow:0 0 18px var(--lime);
+}
+
+h1{
+  font-size:clamp(68px,12vw,145px);
+  line-height:.78;
+  letter-spacing:-.09em;
+  margin:25px 0;
+}
+
+h1 span{
+  color:var(--lime);
+}
+
+.hero p{
+  max-width:580px;
+  color:#aeb7b0;
+  line-height:1.75;
+}
+
+.buttons{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:30px;
+}
+
+.btn{
+  min-height:52px;
+  padding:0 20px;
+  border-radius:7px;
+  border:1px solid #465148;
+  background:transparent;
+  color:#fff;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.12em;
+  cursor:pointer;
+}
+
+.lime{
+  background:var(--lime);
+  color:#071006;
+  border-color:var(--lime);
+}
+
+.location{
+  margin-top:25px;
+  color:#79837d;
+  font-size:9px;
+  letter-spacing:.16em;
+}
+
+.ticker{
+  overflow:hidden;
+  white-space:nowrap;
+  border-block:1px solid #203027;
+  background:#09140e;
+}
+
+.ticker div{
+  width:max-content;
+  padding:15px;
+  color:#89968e;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.16em;
+  animation:marquee 24s linear infinite;
+}
+
+section{
+  padding:100px 0;
+}
+
+.light{
+  background:#eef0e8;
+  color:#101611;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:75px;
+}
+
+.label{
+  font-size:9px;
+  letter-spacing:.17em;
+  font-weight:900;
+  color:#667f31;
+}
+
+.headline{
+  font-size:clamp(48px,6vw,82px);
+  line-height:.86;
+  letter-spacing:-.065em;
+  margin:20px 0;
+}
+
+.headline span{
+  color:#69716c;
+}
+
+.copy p{
+  max-width:480px;
+  color:#66706a;
+  line-height:1.75;
+}
+
+.card{
+  background:#0c1711;
+  border:1px solid #25362b;
+  border-radius:18px;
+  padding:28px;
+}
+
+.field{
+  margin-bottom:16px;
+}
+
+.field label{
+  display:block;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.13em;
+  color:#9da69f;
+  margin-bottom:8px;
+}
+
+.field input,
+.field select,
+.field textarea{
+  width:100%;
+  background:#122018;
+  color:#fff;
+  border:1px solid #33463a;
+  border-radius:7px;
+  padding:14px;
+  font:inherit;
+}
+
+.stars button{
+  font-size:33px;
+  color:#465148;
+  background:0;
+  border:0;
+  cursor:pointer;
+}
+
+.stars button.active{
+  color:var(--lime);
+}
+
+.reviewsSection{
+  background:#07100b;
+}
+
+.reviews{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.review{
+  background:#0c1711;
+  border:1px solid #223228;
+  border-radius:14px;
+  padding:21px;
+  min-height:180px;
+}
+
+.reviewStars{
+  color:var(--lime);
+  float:right;
+}
+
+.name{
+  font-weight:900;
+  font-size:13px;
+}
+
+.food{
+  font-size:8px;
+  color:#77827b;
+  letter-spacing:.12em;
+  margin-top:5px;
+}
+
+.review p{
+  color:#adb5af;
+  font-size:12px;
+  line-height:1.7;
+  clear:both;
+  padding-top:14px;
+}
+
+.limeSection{
+  background:var(--lime);
+  color:#071006;
+}
+
+.limeSection .copy p{
+  color:#334100;
+}
+
+.white{
+  background:#f7f7ef;
+  color:#111;
+}
+
+.white input,
+.white select{
+  background:#fff;
+  color:#111;
+  border-color:#ddd;
+}
+
+.white .btn{
+  background:#08100a;
+  color:#fff;
+  border-color:#08100a;
+}
+
+.cta{
+  text-align:center;
+  background:#eef0e8;
+  color:#111;
+  padding:100px 20px;
+}
+
+.cta .logo{
+  width:120px;
+  height:120px;
+}
+
+.cta h2{
+  font-size:clamp(48px,8vw,95px);
+  line-height:.85;
+  letter-spacing:-.07em;
+}
+
+.cta h2 span{
+  color:#707771;
+}
+
+.footer{
+  padding:25px 0;
+  background:#030704;
+  color:#758078;
+  font-size:9px;
+  letter-spacing:.13em;
+}
+
+.footer .wrap{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:15px;
+}
+
+.footer b{
+  color:#fff;
+}
+
+@keyframes marquee{
+  to{
+    transform:translateX(-50%);
+  }
+}
+
+@keyframes float{
+  50%{
+    transform:translateY(-12px) rotate(2deg);
+  }
+}
+
+@media(max-width:800px){
+
+  .nav div{
+    display:none;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+    gap:35px;
+  }
+
+  .reviews{
+    grid-template-columns:1fr;
+  }
+
+  .hero:after{
+    right:-390px;
+  }
+
+  .buttons .btn{
+    width:100%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+
+<nav class="nav wrap">
+
+<img
+class="logo"
+src="logo.jpg"
+alt="FAAAHHH FIT logo">
+
+<div>
+
+<a href="#review">Review</a>
+
+<a href="#subscription">
+Subscription
+</a>
+
+<a
+href="https://www.instagram.com/faaahhh_fit/"
+target="_blank">
+FAAAHHH FIT ↗
+</a>
+
+<a
+href="https://www.instagram.com/lxm_haus/"
+target="_blank">
+LXM HAUS ↗
+</a>
+
+</div>
+
+<a href="#review">
+RATE US ↗
+</a>
+
+</nav>
+
+
+<div class="heroContent wrap">
+
+<div class="eyebrow">
+<span class="dot"></span>
+FAAAHHH FIT · BY LXM HAUS
+</div>
+
+<h1>
+FUEL YOUR<br>
+<span>CORE.</span>
+</h1>
+
+<p>
+Protein-packed. Healthy. Delicious.
+FAAAHHH FIT brings high-protein and healthy food
+to your next stall, event or everyday routine.
+</p>
+
+<div class="buttons">
+
+<a
+class="btn lime"
+href="#review">
+★ LEAVE A REVIEW
+</a>
+
+<a
+class="btn"
+href="#subscription">
+JOIN SUBSCRIPTION
+</a>
+
+</div>
+
+<div class="location">
+URBAN LUXE FEST · 22 AUGUST 2026 ·
+SANDHYA CONVENTION · GACHIBOWLI
+</div>
+
+</div>
+
+</header>
+
+
+<div class="ticker">
+<div>
+FAAAHHH FIT · HIGH PROTEIN · HEALTHY FOOD ·
+FRESH · FUEL YOUR CORE ·
+FAAAHHH FIT · HIGH PROTEIN · HEALTHY FOOD ·
+FRESH · FUEL YOUR CORE ·
+</div>
+</div>
+
+
+<section id="review" class="light">
+
+<div class="wrap grid">
+
+<div class="copy">
+
+<div class="label">
+01 / CUSTOMER EXPERIENCE
+</div>
+
+<h2 class="headline">
+HOW WAS<br>
+<span>YOUR FIT?</span>
+</h2>
+
+<p>
+Tell us what you tried, rate your experience
+and help FAAAAHHH FIT keep getting better.
+</p>
+
+
+<div class="buttons">
+
+<a
+class="btn"
+style="color:#111;border-color:#ccc"
+href="https://www.instagram.com/faaahhh_fit/"
+target="_blank">
+FAAAHHH FIT INSTAGRAM ↗
+</a>
+
+<a
+class="btn"
+style="color:#111;border-color:#ccc"
+href="https://www.instagram.com/lxm_haus/"
+target="_blank">
+LXM HAUS INSTAGRAM ↗
+</a>
+
+<a
+class="btn"
+style="color:#111;border-color:#ccc"
+href="https://wa.me/918000000000"
+target="_blank">
+WHATSAPP ↗
+</a>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<form id="reviewForm">
+
+<div class="field">
+
+<label>Name</label>
+
+<input
+id="name"
+required
+placeholder="Your name">
+
+</div>
+
+
+<div class="field">
+
+<label>
+What did you try?
+</label>
+
+<select id="food">
+
+<option>Protein Bowl</option>
+
+<option>Wrap</option>
+
+<option>Healthy Meal</option>
+
+<option>Other</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>Rating</label>
+
+<div class="stars" id="stars">
+
+<button type="button" data-r="1">
+★
+</button>
+
+<button type="button" data-r="2">
+★
+</button>
+
+<button type="button" data-r="3">
+★
+</button>
+
+<button type="button" data-r="4">
+★
+</button>
+
+<button type="button" data-r="5">
+★
+</button>
+
+</div>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Your review
+</label>
+
+<textarea
+id="feedback"
+rows="5"
+required
+placeholder="Tell us about your food...">
+</textarea>
+
+</div>
+
+
+<label
+style="
+font-size:10px;
+color:#777;
+display:block;
+margin-bottom:15px">
+
+<input
+type="checkbox"
+required>
+
+I’m happy for FAAAAHHH FIT
+to display my review.
+
+</label>
+
+
+<button
+class="btn lime"
+style="width:100%"
+type="submit">
+
+SUBMIT REVIEW ↗
+
+</button>
+
+
+<div
+id="reviewMsg"
+style="
+font-size:11px;
+margin-top:10px">
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="reviewsSection">
+
+<div class="wrap">
+
+<div class="label">
+02 / THE FIT COMMUNITY
+</div>
+
+<h2 class="headline">
+REAL FOOD.<br>
+<span>REAL REVIEWS.</span>
+</h2>
+
+<div
+class="reviews"
+id="reviews">
+
+</div>
+
+</div>
+
+</section>
+
+
+<section
+id="subscription"
+class="limeSection">
+
+<div class="wrap grid">
+
+<div class="copy">
+
+<div class="label">
+03 / COMING SOON
+</div>
+
+<h2 class="headline">
+HEALTHY MEALS.<br>
+<span>ON REPEAT.</span>
+</h2>
+
+<p>
+FAAAHHH FIT food subscription
+is coming soon.
+Join the waitlist for first access.
+</p>
+
+</div>
+
+
+<div class="card white">
+
+<div class="label">
+FIRST ACCESS
+</div>
+
+<h3
+style="
+font-size:38px;
+margin:10px 0 20px">
+
+Join the waitlist.
+
+</h3>
+
+
+<form id="sub">
+
+<div class="field">
+
+<label>Name</label>
+
+<input
+id="subName"
+required
+placeholder="Your name">
+
+</div>
+
+
+<div class="field">
+
+<label>
+WhatsApp / Phone
+</label>
+
+<input
+id="subPhone"
+required
+type="tel"
+placeholder="Your number">
+
+</div>
+
+
+<div class="field">
+
+<label>Email</label>
+
+<input
+id="subEmail"
+type="email"
+placeholder="Optional">
+
+</div>
+
+
+<div class="field">
+
+<label>Interest</label>
+
+<select id="subInterest">
+
+<option>
+High-protein meals
+</option>
+
+<option>
+Healthy everyday meals
+</option>
+
+<option>
+Office / college plans
+</option>
+
+<option>
+Not sure yet
+</option>
+
+</select>
+
+</div>
+
+
+<button
+class="btn"
+style="width:100%"
+type="submit">
+
+JOIN WAITLIST ↗
+
+</button>
+
+
+<div
+id="subMsg"
+style="
+font-size:11px;
+margin-top:10px">
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="cta">
+
+<img
+class="logo"
+src="logo.jpg"
+alt="FAAAHHH FIT">
+
+<h2>
+HEALTHY DOESN’T<br>
+<span>HAVE TO BE BORING.</span>
+</h2>
+
+<p>
+FAAAHHH FIT · by LXM HAUS
+</p>
+
+
+<div
+class="buttons"
+style="justify-content:center">
+
+<a
+class="btn lime"
+href="#review">
+
+RATE FAAAAHHH FIT
+
+</a>
+
+
+<a
+class="btn"
+style="color:#111;border-color:#ccc"
+href="https://www.instagram.com/faaahhh_fit/"
+target="_blank">
+
+FOLLOW FAAAAHHH FIT ↗
+
+</a>
+
+
+<a
+class="btn"
+style="color:#111;border-color:#ccc"
+href="https://www.instagram.com/lxm_haus/"
+target="_blank">
+
+FOLLOW LXM HAUS ↗
+
+</a>
+
+</div>
+
+</section>
+
+
+<footer class="footer">
+
+<div class="wrap">
+
+<b>FAAAHHH FIT</b>
+
+<span>
+BY LXM HAUS
+</span>
+
+<span>
+© 2026
+</span>
+
+</div>
+
+</footer>
+
+
+<script>
+
+let rating = 5;
+
+const stars =
+[...document.querySelectorAll("#stars button")];
+
+
+function paintStars(){
+
+  stars.forEach(star => {
+
+    star.classList.toggle(
+      "active",
+      Number(star.dataset.r) <= rating
+    );
+
+  });
+
+}
+
+
+stars.forEach(star => {
+
+  star.onclick = () => {
+
+    rating =
+    Number(star.dataset.r);
+
+    paintStars();
+
+  };
+
+});
+
+
+paintStars();
+
+
+function getReviews(){
+
+  return JSON.parse(
+    localStorage.getItem(
+      "faaahhh_fit_reviews"
+    ) || "[]"
+  );
+
+}
+
+
+function saveReviews(reviews){
+
+  localStorage.setItem(
+    "faaahhh_fit_reviews",
+    JSON.stringify(reviews)
+  );
+
+}
+
+
+function escapeHTML(text){
+
+  return String(text || "")
+
+  .replaceAll("&","&amp;")
+  .replaceAll("<","&lt;")
+  .replaceAll(">","&gt;")
+  .replaceAll('"',"&quot;");
+
+}
+
+
+function renderReviews(){
+
+  const reviews =
+  getReviews()
+  .filter(review => review.approved);
+
+
+  const demoReviews = [
+
+    {
+      name:"FAAAHHH FIT Customer",
+      food:"Protein Bowl",
+      rating:5,
+      text:"Fresh, filling and genuinely tasty. Healthy food that actually feels satisfying."
+    },
+
+    {
+      name:"FAAAHHH FIT Customer",
+      food:"Wrap",
+      rating:5,
+      text:"Loved the flavour and portion. Would definitely order again."
+    },
+
+    {
+      name:"FAAAHHH FIT Customer",
+      food:"Healthy Meal",
+      rating:5,
+      text:"Clean, tasty and convenient. Looking forward to the subscription."
+    }
+
+  ];
+
+
+  const displayReviews =
+  [...reviews,...demoReviews]
+  .slice(0,6);
+
+
+  document.getElementById("reviews")
+  .innerHTML =
+
+  displayReviews.map(review => `
+
+  <article class="review">
+
+  <span class="reviewStars">
+  ${"★".repeat(review.rating)}
+  ${"☆".repeat(5-review.rating)}
+  </span>
+
+  <div class="name">
+  ${escapeHTML(review.name)}
+  </div>
+
+  <div class="food">
+  ${escapeHTML(review.food)}
+  </div>
+
+  <p>
+  “${escapeHTML(review.text)}”
+  </p>
+
+  </article>
+
+  `).join("");
+
+}
+
+
+renderReviews();
+
+
+document
+.getElementById("reviewForm")
+.onsubmit = function(event){
+
+  event.preventDefault();
+
+
+  const reviews =
+  getReviews();
+
+
+  reviews.unshift({
+
+    id:Date.now(),
+
+    name:
+    document
+    .getElementById("name")
+    .value
+    .trim(),
+
+    food:
+    document
+    .getElementById("food")
+    .value,
+
+    rating:rating,
+
+    text:
+    document
+    .getElementById("feedback")
+    .value
+    .trim(),
+
+    approved:false,
+
+    date:
+    new Date()
+    .toISOString()
+
+  });
+
+
+  saveReviews(reviews);
+
+
+  document
+  .getElementById("reviewMsg")
+  .textContent =
+
+  "Thank you! Your review has been received.";
+
+
+  event.target.reset();
+
+  rating = 5;
+
+  paintStars();
+
+};
+
+
+function getLeads(){
+
+  return JSON.parse(
+    localStorage.getItem(
+      "faaahhh_fit_leads"
+    ) || "[]"
+  );
+
+}
+
+
+function saveLeads(leads){
+
+  localStorage.setItem(
+    "faaahhh_fit_leads",
+    JSON.stringify(leads)
+  );
+
+}
+
+
+document
+.getElementById("sub")
+.onsubmit = function(event){
+
+  event.preventDefault();
+
+
+  const leads =
+  getLeads();
+
+
+  leads.unshift({
+
+    id:Date.now(),
+
+    name:
+    document
+    .getElementById("subName")
+    .value
+    .trim(),
+
+    phone:
+    document
+    .getElementById("subPhone")
+    .value
+    .trim(),
+
+    email:
+    document
+    .getElementById("subEmail")
+    .value
+    .trim(),
+
+    interest:
+    document
+    .getElementById("subInterest")
+    .value,
+
+    date:
+    new Date()
+    .toISOString()
+
+  });
+
+
+  saveLeads(leads);
+
+
+  document
+  .getElementById("subMsg")
+  .textContent =
+
+  "You're on the FAAAAHHH FIT waitlist!";
+
+
+  event.target.reset();
+
+};
+
+</script>
+
+</body>
+</html>
